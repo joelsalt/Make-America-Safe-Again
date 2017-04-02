@@ -1,6 +1,12 @@
 # Make-America-Safe-Again
 A Crowd-sourced security software that provides protective eyes on everything from the border to store shrink.
 
+Made by:
+Shedlon Pasciak
+Brendan Tackney
+Austin Lubetkin
+Joel Milligan
+
 ## Inspiration
 Make America Safe Again (MASA) is based off of the idea that anyone, anywhere, can help protect our neighbors. The idea was initially conceived as a tongue-in-cheek April Fools joke but ended a fully fleshed-out and economic innovation. 
 
