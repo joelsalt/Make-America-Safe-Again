@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" ng-app>
+  <head>
+    <title></title>
+    
+    <br />
+    
+    <img id="myimage" src="" width="300" height="300" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+    <style>
+      body {
+        padding-top: 60px;
+        background-color:yellow;
+      }
+    </style>
+  
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    
+    <script>
+    
+    var myid=0;
+    
+    var videofeed;
+
+    var globaldata="";
+    
+     // function ChatController($scope) {
+        var socket = io.connect();
+        
+        socket.on("image_server", function(data) {
+            
+            myimage.src=data;
+            
+        });
+
+        socket.on('connect', function () {
+         
+            /*global $*/
+            $('#body').css("background-color",'blue');         
+        });
+   
+
+    </script>
+    
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+</head>
+
+<style>
+#container {
+    margin: 0px auto;
+    width: 640px;
+    height: 480px;
+    
+}
+#webCam {
+    width: 640px;
+    height: 480px;
+    background-color: #666;
+}
+a, a:hover {
+    font-size: 5em;
+    text-decoration: none;
+}
+</style>
+
+<body id="body">
+    
+    <canvas hidden id="canvas" width=640 height=480 style="display:none;"></canvas>
+    <div id="container">
+        <video hidden style="display:none;" autoplay="true" id="videoElement" width=100% height=100%>
+        </video>
+    </div>
+    <br/>
+    <a HIDDEN href="user-registration.html">User Registration Page</a>
+    
+</body>
+
+<script>
+
+
+/*global $*/
+$( document ).ready(function() {
+    console.log( "ready!" );
+
+});
+
+var myVar;
+
+function myFunction() {
+    myVar = setInterval(alertFunc, 3000);
+}
+
+function alertFunc() {
+snapImage();
+console.log("snap");
+/*global socket*/
+socket.emit("get_image", null);
+}
+
+myFunction();
+
+var image = new Image();
+
+var canvas = document.querySelector('#canvas');
+var ctx = canvas.getContext('2d');
+
+function snapImage() {
+    
+   ctx.drawImage(video,0,0,640,480);
+   
+   //image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); // here is the most important part because if you dont replace you will get a DOM 18 exception.
+   
+   image=canvas.toDataURL('image/png', '');
+   
+   $('#info').val(image);
+
+   globaldata=image;
+
+   socket.emit("server_image", globaldata);
+
+}
+
+var video = document.querySelector("#videoElement");
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+if (navigator.getUserMedia) {
+    navigator.getUserMedia({video: true}, handleVideo, videoError);
+}
+function handleVideo(stream) {
+    video.src = window.URL.createObjectURL(stream);
+  // if (video.src!==null)  document.querySelector("#test").src=video.src;
+}
+function videoError(e) {
+    document.write("Please enable your webcam to continue.");
+}
+
+</script>
+  </head>
+  <body>
+  </body>
+</html>
