@@ -15,6 +15,13 @@ When we say anyone can do their part we mean _anyone_. Former soldiers, doctors;
 ## What it does
 Our software allows people to watch secured streams from the comfort of their own homes. The users log onto their account and are provided with instant access to several streams. While viewing the feed, users can interact with others via a chat system, or report any crimes they witness. The more active users on a stream, the better the reliability of tips.
 
+We've built a virtual wall; one whose usefulness extends far beyond border security. We can also provide:
+
+- loss prevention
+- stalker apprehension
+- eyes on bodies of water to prevent drowning (condo commando style)
+- any security needs via viewers and users
+
 Users would be validated via a background check and a rating system. The rating system falls into the hands of the admin of a collection of streams (i.e. head of security, police dispatch, ect). Admins can then rate the reports based on the effectiveness of the tip. If the tip leads to an arrest or apprehension, the user could even receive a reward; Incentivising people to "stand guard". However, multiple thumbs down in a row would lead to a permanent ban.
 
 We expect that this system could put a yuge dent in crime and increase response times. MASA would impact shoplifting, drug deals, street crime, border control, and almost anything one could point a camera at. AI is clearly not to the point of detecting crime, so we decided to put the power back in the hands of the people.
